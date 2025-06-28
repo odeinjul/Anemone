@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E5D014302E0FF50B007BDE9B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E5D0142F2E0FF50B007BDE9B /* .gitignore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E57925822E0ECA2D00A2DB88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E57925682E0ECA2B00A2DB88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E579256F2E0ECA2B00A2DB88;
+			remoteInfo = Anemone;
+		};
+		E579258C2E0ECA2D00A2DB88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E57925682E0ECA2B00A2DB88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E579256F2E0ECA2B00A2DB88;
+			remoteInfo = Anemone;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E57925702E0ECA2B00A2DB88 /* Anemone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Anemone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57925812E0ECA2D00A2DB88 /* AnemoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnemoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E579258B2E0ECA2D00A2DB88 /* AnemoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnemoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5D0142F2E0FF50B007BDE9B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E5DB65542E0FECC500D7B64D /* test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = test.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E57925932E0ECA2D00A2DB88 /* Exceptions for "Anemone" folder in "Anemone" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E579256F2E0ECA2B00A2DB88 /* Anemone */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E57925722E0ECA2B00A2DB88 /* Anemone */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E57925932E0ECA2D00A2DB88 /* Exceptions for "Anemone" folder in "Anemone" target */,
+			);
+			path = Anemone;
+			sourceTree = "<group>";
+		};
+		E57925842E0ECA2D00A2DB88 /* AnemoneTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AnemoneTests;
+			sourceTree = "<group>";
+		};
+		E579258E2E0ECA2D00A2DB88 /* AnemoneUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AnemoneUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E579256D2E0ECA2B00A2DB88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E579257E2E0ECA2D00A2DB88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E57925882E0ECA2D00A2DB88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E57925672E0ECA2B00A2DB88 = {
+			isa = PBXGroup;
+			children = (
+				E5D0142F2E0FF50B007BDE9B /* .gitignore */,
+				E5DB65542E0FECC500D7B64D /* test.playground */,
+				E57925842E0ECA2D00A2DB88 /* AnemoneTests */,
+				E579258E2E0ECA2D00A2DB88 /* AnemoneUITests */,
+				E57925712E0ECA2B00A2DB88 /* Products */,
+				E57925722E0ECA2B00A2DB88 /* Anemone */,
+			);
+			sourceTree = "<group>";
+		};
+		E57925712E0ECA2B00A2DB88 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E57925702E0ECA2B00A2DB88 /* Anemone.app */,
+				E57925812E0ECA2D00A2DB88 /* AnemoneTests.xctest */,
+				E579258B2E0ECA2D00A2DB88 /* AnemoneUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E579256F2E0ECA2B00A2DB88 /* Anemone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E57925942E0ECA2D00A2DB88 /* Build configuration list for PBXNativeTarget "Anemone" */;
+			buildPhases = (
+				E579256C2E0ECA2B00A2DB88 /* Sources */,
+				E579256D2E0ECA2B00A2DB88 /* Frameworks */,
+				E579256E2E0ECA2B00A2DB88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E57925722E0ECA2B00A2DB88 /* Anemone */,
+			);
+			name = Anemone;
+			packageProductDependencies = (
+			);
+			productName = Anemone;
+			productReference = E57925702E0ECA2B00A2DB88 /* Anemone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E57925802E0ECA2D00A2DB88 /* AnemoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E57925992E0ECA2D00A2DB88 /* Build configuration list for PBXNativeTarget "AnemoneTests" */;
+			buildPhases = (
+				E579257D2E0ECA2D00A2DB88 /* Sources */,
+				E579257E2E0ECA2D00A2DB88 /* Frameworks */,
+				E579257F2E0ECA2D00A2DB88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E57925832E0ECA2D00A2DB88 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E57925842E0ECA2D00A2DB88 /* AnemoneTests */,
+			);
+			name = AnemoneTests;
+			packageProductDependencies = (
+			);
+			productName = AnemoneTests;
+			productReference = E57925812E0ECA2D00A2DB88 /* AnemoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E579258A2E0ECA2D00A2DB88 /* AnemoneUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E579259C2E0ECA2D00A2DB88 /* Build configuration list for PBXNativeTarget "AnemoneUITests" */;
+			buildPhases = (
+				E57925872E0ECA2D00A2DB88 /* Sources */,
+				E57925882E0ECA2D00A2DB88 /* Frameworks */,
+				E57925892E0ECA2D00A2DB88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E579258D2E0ECA2D00A2DB88 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E579258E2E0ECA2D00A2DB88 /* AnemoneUITests */,
+			);
+			name = AnemoneUITests;
+			packageProductDependencies = (
+			);
+			productName = AnemoneUITests;
+			productReference = E579258B2E0ECA2D00A2DB88 /* AnemoneUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E57925682E0ECA2B00A2DB88 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					E579256F2E0ECA2B00A2DB88 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					E57925802E0ECA2D00A2DB88 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = E579256F2E0ECA2B00A2DB88;
+					};
+					E579258A2E0ECA2D00A2DB88 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = E579256F2E0ECA2B00A2DB88;
+					};
+				};
+			};
+			buildConfigurationList = E579256B2E0ECA2B00A2DB88 /* Build configuration list for PBXProject "Anemone" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E57925672E0ECA2B00A2DB88;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E57925712E0ECA2B00A2DB88 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E579256F2E0ECA2B00A2DB88 /* Anemone */,
+				E57925802E0ECA2D00A2DB88 /* AnemoneTests */,
+				E579258A2E0ECA2D00A2DB88 /* AnemoneUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E579256E2E0ECA2B00A2DB88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D014302E0FF50B007BDE9B /* .gitignore in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E579257F2E0ECA2D00A2DB88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E57925892E0ECA2D00A2DB88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E579256C2E0ECA2B00A2DB88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E579257D2E0ECA2D00A2DB88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E57925872E0ECA2D00A2DB88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E57925832E0ECA2D00A2DB88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E579256F2E0ECA2B00A2DB88 /* Anemone */;
+			targetProxy = E57925822E0ECA2D00A2DB88 /* PBXContainerItemProxy */;
+		};
+		E579258D2E0ECA2D00A2DB88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E579256F2E0ECA2B00A2DB88 /* Anemone */;
+			targetProxy = E579258C2E0ECA2D00A2DB88 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E57925952E0ECA2D00A2DB88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Anemone/Anemone.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SAZ52TV6LX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Anemone/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Odeinjul.Anemone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E57925962E0ECA2D00A2DB88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Anemone/Anemone.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SAZ52TV6LX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Anemone/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Odeinjul.Anemone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E57925972E0ECA2D00A2DB88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SAZ52TV6LX;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E57925982E0ECA2D00A2DB88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SAZ52TV6LX;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E579259A2E0ECA2D00A2DB88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SAZ52TV6LX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Odeinjul.AnemoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Anemone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Anemone";
+			};
+			name = Debug;
+		};
+		E579259B2E0ECA2D00A2DB88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SAZ52TV6LX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Odeinjul.AnemoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Anemone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Anemone";
+			};
+			name = Release;
+		};
+		E579259D2E0ECA2D00A2DB88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SAZ52TV6LX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Odeinjul.AnemoneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Anemone;
+			};
+			name = Debug;
+		};
+		E579259E2E0ECA2D00A2DB88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SAZ52TV6LX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Odeinjul.AnemoneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Anemone;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E579256B2E0ECA2B00A2DB88 /* Build configuration list for PBXProject "Anemone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E57925972E0ECA2D00A2DB88 /* Debug */,
+				E57925982E0ECA2D00A2DB88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E57925942E0ECA2D00A2DB88 /* Build configuration list for PBXNativeTarget "Anemone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E57925952E0ECA2D00A2DB88 /* Debug */,
+				E57925962E0ECA2D00A2DB88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E57925992E0ECA2D00A2DB88 /* Build configuration list for PBXNativeTarget "AnemoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E579259A2E0ECA2D00A2DB88 /* Debug */,
+				E579259B2E0ECA2D00A2DB88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E579259C2E0ECA2D00A2DB88 /* Build configuration list for PBXNativeTarget "AnemoneUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E579259D2E0ECA2D00A2DB88 /* Debug */,
+				E579259E2E0ECA2D00A2DB88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E57925682E0ECA2B00A2DB88 /* Project object */;
+}
