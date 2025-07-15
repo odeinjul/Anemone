@@ -49,6 +49,7 @@ class Transaction {
     var account: Account
     var category: Category
     var note: String?
+    var date: Date = Date()
     var transferAccount: Account?
     var transferAmount: Decimal? // in case transfer between different currencies, w/ handling fee
     init(name: String, type: TransactionType, amount: Decimal, account: Account, category: Category, note: String? = nil, transferAccount: Account? = nil, transferAmount: Decimal? = nil) {

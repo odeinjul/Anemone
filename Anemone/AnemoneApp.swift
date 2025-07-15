@@ -12,7 +12,6 @@ import SwiftData
 struct AnemoneApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
             Account.self,
             Transaction.self,
             Category.self
@@ -28,7 +27,28 @@ struct AnemoneApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                /*
+                AnalyzeView()
+                    .tabItem {
+                        Label("Analyze", systemImage: "chart.line.text.clipboard")
+                    }
+                */
+                StaticView()
+                    .tabItem {
+                        Label("Static", systemImage: "wallet.bifold")
+                    }
+                /*
+                TestView()
+                    .tabItem {
+                        Label("Test", systemImage: "gear")
+                    }
+                */
+            }
         }
         .modelContainer(sharedModelContainer)
     }
