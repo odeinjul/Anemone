@@ -8,7 +8,7 @@
 import Foundation
 
 struct CurrencyFormatter {
-    static func format(_ amount: Decimal, currency: String) -> String {
+    static func format(_ amount: Decimal, currency: String = "USD") -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = currency

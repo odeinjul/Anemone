@@ -138,7 +138,7 @@ struct StaticView: View {
                                     Text("Current")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
-                                    Text(formatCurrency(currentNetWorth))
+                                    Text(CurrencyFormatter.format(currentNetWorth))
                                         .font(.headline)
                                         .fontWeight(.bold)
                                         .foregroundColor(currentNetWorth >= 0 ? .green : .red)
@@ -156,7 +156,7 @@ struct StaticView: View {
                                 Image(systemName: change >= 0 ? "arrow.up.right" : "arrow.down.right")
                                     .foregroundColor(change >= 0 ? .green : .red)
                                 
-                                Text(formatCurrency(change))
+                                Text(CurrencyFormatter.format(change))
                                     .font(.subheadline)
                                     .fontWeight(.medium)
                                     .foregroundColor(change >= 0 ? .green : .red)
@@ -402,14 +402,6 @@ struct StaticView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         return formatter.string(from: date)
-    }
-    
-    private func formatCurrency(_ amount: Decimal) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        formatter.maximumFractionDigits = 2
-        return formatter.string(from: NSDecimalNumber(decimal: amount)) ?? "$0.00"
     }
     
     private func formatCurrencyShort(_ amount: Decimal) -> String {

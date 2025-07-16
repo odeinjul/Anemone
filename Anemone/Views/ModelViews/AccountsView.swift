@@ -113,7 +113,7 @@ struct AccountRow: View {
                 Text(account.name)
                     .font(.headline)
                 Spacer()
-                Text(formatCurrency(account.checkpointBalance, currency: account.currency))
+                Text(CurrencyFormatter.format(account.checkpointBalance, currency: account.currency))
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .foregroundColor(.primary)
@@ -131,13 +131,6 @@ struct AccountRow: View {
             }
         }
         .padding(.vertical, 4)
-    }
-    
-    private func formatCurrency(_ amount: Decimal, currency: String) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = currency
-        return formatter.string(from: amount as NSDecimalNumber) ?? "\(currency) \(amount)"
     }
 }
 
@@ -211,7 +204,7 @@ struct AddEditAccountView: View {
                         HStack {
                             Text("Current Balance")
                             Spacer()
-                            Text(formatCurrency(account.checkpointBalance, currency: account.currency))
+                            Text(CurrencyFormatter.format(account.checkpointBalance, currency: account.currency))
                                 .foregroundColor(.secondary)
                         }
                     }
@@ -292,22 +285,42 @@ struct AddEditAccountView: View {
             showingError = true
         }
     }
+}
+
+struct AccountSummaryRow: View {
+    let account: Account
     
-    private func formatCurrency(_ amount: Decimal, currency: String) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = currency
-        return formatter.string(from: amount as NSDecimalNumber) ?? "\(currency) \(amount)"
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(account.name)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                Text(account.currency)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            Text(CurrencyFormatter.format(account.checkpointBalance, currency: account.currency))
+                .font(.subheadline)
+                .fontWeight(.medium)
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
+        .background(Color(.secondarySystemBackground))
+        .cornerRadius(8)
     }
 }
 
 #Preview {
-    @Previewable @State var testAccount = Account(name:"as", currency: "USD", initialBalance: 0)
-    AccountsListView(
-        accounts: .constant([testAccount]),
-        showingAddAccount: .constant(false),
-        selectedAccount: .constant(nil),
-        showingEditAccount: .constant(false),
-        showingDeleteAlert: .constant(false)
+    let preview = Preview()
+    preview.addExamples(
+        accounts: [Account.example],
+        categories: [Category.example],
+        transactions: [Transaction.example]
     )
+    return HomeView()
+        .modelContainer(preview.modelContainer)
 }

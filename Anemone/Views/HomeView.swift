@@ -11,6 +11,7 @@ struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var accounts: [Account]
     @Query private var transactions: [Transaction]
+    @Query private var categories: [Category]
     @State private var storedAccounts: [Account] = []
     @State private var storedTransactions: [Transaction] = []
     @State private var showingAddAccount = false
@@ -32,7 +33,7 @@ struct HomeView: View {
                             Text("Net Worth")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
-                            Text(formatCurrency(netWorth))
+                            Text(CurrencyFormatter.format(netWorth))
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .foregroundColor(.primary)
@@ -45,7 +46,7 @@ struct HomeView: View {
                                 Text("Monthly Income")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
-                                Text(formatCurrency(monthlyIncome))
+                                Text(CurrencyFormatter.format(monthlyIncome))
                                     .font(.title3)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
@@ -56,7 +57,7 @@ struct HomeView: View {
                                 Text("Monthly Expenses")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
-                                Text(formatCurrency(monthlyExpenses))
+                                Text(CurrencyFormatter.format(monthlyExpenses))
                                     .font(.title3)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
@@ -68,22 +69,6 @@ struct HomeView: View {
                     
                     // Quick Add Buttons
                     HStack(spacing: 16) {
-                        Button(action: {
-                            showingAddAccount = true
-                        }) {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.title2)
-                                Text("Account")
-                                    .fontWeight(.medium)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue.opacity(0.1))
-                            .foregroundColor(.blue)
-                            .cornerRadius(12)
-                        }
-                        
                         Button(action: {
                             showingAddTransaction = true
                         }) {
@@ -150,16 +135,57 @@ struct HomeView: View {
                                         }
                                 }
                             }
-                            
-                            if accounts.count > 3 {
+                        }
+                    }
+                    .padding()
+                    .background(Color(.systemBackground))
+                    .cornerRadius(16)
+                    .shadow(color: Color.black.opacity(0.03), radius: 8, x: 0, y: 2)
+                    .padding(.horizontal)
+                    
+                    // Categories Card
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Categories")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                Text("\(categories.count) categor\(categories.count == 1 ? "y" : "ies")")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                            //NavigationLink(destination: CategoriesView()) {
                                 HStack {
-                                    Spacer()
-                                    Text("and \(accounts.count - 3) more...")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
+                                    Image(systemName: "chevron.right")
                                 }
-                                .padding(.top, 8)
+                                .foregroundColor(.blue)
+                            //}
+                        }
+
+                        if categories.isEmpty {
+                            VStack(spacing: 8) {
+                                Image(systemName: "tag")
+                                    .font(.system(size: 32))
+                                    .foregroundColor(.secondary)
+                                Text("No categories yet")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                Text("Add your first category to organize transactions")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 20)
+                        } else {
+                            LazyVStack(spacing: 8) {
+                                ForEach(categories.prefix(3)) { category in
+                                    CategorySummaryRow(category: category, transactions: transactions)
+                                        .onTapGesture {
+                                            // handle tap or edit navigation
+                                        }
+                                }
                             }
                         }
                     }
@@ -169,11 +195,12 @@ struct HomeView: View {
                     .shadow(color: Color.black.opacity(0.03), radius: 8, x: 0, y: 2)
                     .padding(.horizontal)
                     
+                    
                     // Transactions Card
                     VStack(alignment: .leading, spacing: 16) {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("Recent Transactions")
+                                Text("Transactions")
                                     .font(.title2)
                                     .fontWeight(.bold)
                                 Text("\(transactions.count) transaction\(transactions.count == 1 ? "" : "s")")
@@ -215,17 +242,6 @@ struct HomeView: View {
                                             showingEditTransaction = true
                                         }
                                 }
-                            }
-                            
-                            if transactions.count > 3 {
-                                HStack {
-                                    Spacer()
-                                    Text("and \(transactions.count - 3) more...")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
-                                }
-                                .padding(.top, 8)
                             }
                         }
                     }
@@ -346,112 +362,15 @@ struct HomeView: View {
                 total + transaction.amount
             }
     }
-    
-    private func formatCurrency(_ amount: Decimal) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        formatter.maximumFractionDigits = 2
-        
-        return formatter.string(from: NSDecimalNumber(decimal: amount)) ?? "$0.00"
-    }
-}
-
-struct AccountSummaryRow: View {
-    let account: Account
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(account.name)
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                Text(account.currency)
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
-            }
-            
-            Spacer()
-            
-            Text(formatCurrency(account.checkpointBalance, currency: account.currency))
-                .font(.subheadline)
-                .fontWeight(.medium)
-        }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(8)
-    }
-    
-    private func formatCurrency(_ amount: Decimal, currency: String) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = currency
-        formatter.maximumFractionDigits = 2
-        return formatter.string(from: amount as NSDecimalNumber) ?? "\(currency) \(amount)"
-    }
-}
-
-struct TransactionSummaryRow: View {
-    let transaction: Transaction
-    
-    var body: some View {
-        HStack {
-            Image(systemName: transactionIcon)
-                .font(.subheadline)
-                .frame(width: 20)
-            
-            VStack(alignment: .leading, spacing: 2) {
-                Text(transaction.name)
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                    .lineLimit(1)
-                HStack {
-                    Text(transaction.category.name)
-                        .font(.caption2)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 2)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(4)
-                    Text("• \(transaction.account.name)")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                }
-            }
-            
-            Spacer()
-            
-            Text(formatCurrency(transaction.amount, currency: transaction.account.currency))
-                .font(.subheadline)
-                .fontWeight(.medium)
-        }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(8)
-    }
-    
-    private var transactionIcon: String {
-        switch transaction.type {
-        case .income:
-            return "arrow.down.circle.fill"
-        case .expense:
-            return "arrow.up.circle.fill"
-        case .transfer:
-            return "arrow.left.arrow.right.circle.fill"
-        }
-    }
-    
-    private func formatCurrency(_ amount: Decimal, currency: String) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = currency
-        formatter.maximumFractionDigits = 2
-        return formatter.string(from: amount as NSDecimalNumber) ?? "\(currency) \(amount)"
-    }
 }
 
 #Preview {
-    HomeView()
-        .modelContainer(for: [Account.self, Transaction.self, Category.self], inMemory: true)
+    let preview = Preview()
+    preview.addExamples(
+        accounts: [Account.example],
+        categories: [Category.example],
+        transactions: [Transaction.example]
+    )
+    return HomeView()
+        .modelContainer(preview.modelContainer)
 }

@@ -259,7 +259,7 @@ struct TransactionRow: View {
                         .font(.headline)
                         .lineLimit(1)
                     Spacer()
-                    Text(formatCurrency(transaction.amount, currency: transaction.account.currency))
+                    Text(CurrencyFormatter.format(transaction.amount, currency: transaction.account.currency))
                         .font(.headline)
                         .fontWeight(.semibold)
                         .foregroundColor(transactionColor)
@@ -298,7 +298,7 @@ struct TransactionRow: View {
                         
                         if let transferAmount = transaction.transferAmount {
                             Spacer()
-                            Text(formatCurrency(transferAmount, currency: transferAccount.currency))
+                            Text(CurrencyFormatter.format(transferAmount, currency: transferAccount.currency))
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -329,13 +329,6 @@ struct TransactionRow: View {
         case .transfer:
             return .blue
         }
-    }
-    
-    private func formatCurrency(_ amount: Decimal, currency: String) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = currency
-        return formatter.string(from: amount as NSDecimalNumber) ?? "\(currency) \(amount)"
     }
 }
 
@@ -502,7 +495,7 @@ struct AddEditTransactionView: View {
                         HStack {
                             Text("Account Balance")
                             Spacer()
-                            Text(formatCurrency(transaction.account.checkpointBalance, currency: transaction.account.currency))
+                            Text(CurrencyFormatter.format(transaction.account.checkpointBalance, currency: transaction.account.currency))
                                 .foregroundColor(.secondary)
                         }
                     }
@@ -661,40 +654,63 @@ struct AddEditTransactionView: View {
             showingError = true
         }
     }
+}
+
+struct TransactionSummaryRow: View {
+    let transaction: Transaction
     
-    private func formatCurrency(_ amount: Decimal, currency: String) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = currency
-        return formatter.string(from: amount as NSDecimalNumber) ?? "\(currency) \(amount)"
+    var body: some View {
+        HStack {
+            Image(systemName: transactionIcon)
+                .font(.subheadline)
+                .frame(width: 20)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(transaction.name)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .lineLimit(1)
+                HStack (spacing: 2){
+                    Text(transaction.category.name)
+                    Text("•")
+                    Text(transaction.account.name)
+                }
+                .font(.caption2)
+                .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            Text(CurrencyFormatter.format(transaction.amount, currency: transaction.account.currency))
+                .font(.subheadline)
+                .fontWeight(.medium)
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
+        .background(Color(.secondarySystemBackground))
+        .cornerRadius(8)
+    }
+    
+    private var transactionIcon: String {
+        switch transaction.type {
+        case .income:
+            return "arrow.down.circle.fill"
+        case .expense:
+            return "arrow.up.circle.fill"
+        case .transfer:
+            return "arrow.left.arrow.right.circle.fill"
+        }
     }
 }
 
-/*
-
 #Preview {
-    @Previewable @State var testAccount = Account(name: "Test Account", currency: "USD", initialBalance: 1000)
-    @Previewable @State var testCategory = Category(name: "Food")
-    @Previewable @State var testTransaction = Transaction(
-        name: "Grocery Shopping",
-        type: .expense,
-        amount: 150.50,
-        account: testAccount,
-        category: testCategory,
-        note: "Weekly groceries"
+    let preview = Preview()
+    preview.addExamples(
+        accounts: [Account.example],
+        categories: [Category.example],
+        transactions: [Transaction.example]
     )
-    
-    TransactionsListView(
-        transactions: .constant([testTransaction]),
-        showingAddTransaction: .constant(false),
-        selectedTransaction: .constant(nil),
-        showingEditTransaction: .constant(false),
-        showingDeleteAlert: .constant(false)
-    )
-    .modelContainer(for: [Transaction.self, Account.self, Category.self], inMemory: true)
+    return HomeView()
+        .modelContainer(preview.modelContainer)
 }
 
-#Preview {
-    TransactionsView()
-}
-*/
