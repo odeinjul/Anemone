@@ -11,27 +11,53 @@ import SwiftData
 
 
 struct CategorySummaryRow: View {
-    let category: Category
+    let category: Category?
     let transactions: [Transaction]
 
     // Calculate monthly income and outcome for this category
     private var monthlyIncome: Decimal {
         let (start, end) = Self.monthBounds()
-        return transactions
-            .filter { $0.category.id == category.id && $0.type == .income && $0.date >= start && $0.date < end }
-            .reduce(0) { $0 + $1.amount }
+        if let category = category {
+            return transactions
+                .filter {
+                    $0.category != nil &&
+                    $0.category!.id == category.id
+                    && $0.type == .income
+                    && $0.date >= start
+                    && $0.date < end
+                }
+                .reduce(0) { $0 + $1.amount }
+        } else {
+            return transactions
+                .filter { $0.type == .income && $0.date >= start && $0.date < end }
+                .reduce(0) { $0 + $1.amount }
+        }
     }
 
     private var monthlyOutcome: Decimal {
         let (start, end) = Self.monthBounds()
-        return transactions
-            .filter { $0.category.id == category.id && $0.type == .expense && $0.date >= start && $0.date < end }
-            .reduce(0) { $0 + $1.amount }
+        let filtered: [Transaction]
+        if let category = category {
+            filtered = transactions
+                .filter {
+                    $0.category != nil &&
+                    $0.category!.id == category.id
+                    && $0.type == .expense
+                    && $0.date >= start
+                    && $0.date < end
+                }
+        } else {
+            filtered = transactions.filter {
+                $0.type == .expense &&
+                $0.date >= start && $0.date < end
+            }
+        }
+        return filtered.reduce(0) { $0 + $1.amount }
     }
 
     var body: some View {
         HStack {
-            Text(category.name)
+            Text(category!.name)
                 .font(.subheadline)
                 .fontWeight(.medium)
             Spacer()

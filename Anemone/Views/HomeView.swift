@@ -28,8 +28,7 @@ struct HomeView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     VStack(alignment: .leading) {
-                        // Net Worth
-                        VStack(alignment: .leading) {
+                        VStack (alignment: .leading) {
                             Text("Net Worth")
                                 .font(.headline)
                                 .foregroundColor(.secondary)
@@ -39,31 +38,30 @@ struct HomeView: View {
                                 .foregroundColor(.primary)
                         }
                         Spacer()
-                        
-                        // Monthly Income/Outcome
-                        HStack(spacing: 20) {
+                        HStack (spacing: 20){
                             VStack(alignment: .leading) {
-                                Text("Monthly Income")
+                                Text("Income")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                                 Text(CurrencyFormatter.format(monthlyIncome))
-                                    .font(.title3)
+                                    .font(.headline)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
                             }
                             Spacer()
-                            
                             VStack(alignment: .leading) {
-                                Text("Monthly Expenses")
+                                Text("Expenses")
                                     .font(.headline)
                                     .foregroundColor(.secondary)
                                 Text(CurrencyFormatter.format(monthlyExpenses))
-                                    .font(.title3)
+                                    .font(.headline)
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
                             }
+                            Spacer()
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 25)
                     .padding(.top, 15)
                     
@@ -142,60 +140,7 @@ struct HomeView: View {
                     .cornerRadius(16)
                     .shadow(color: Color.black.opacity(0.03), radius: 8, x: 0, y: 2)
                     .padding(.horizontal)
-                    
-                    // Categories Card
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("Categories")
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                Text("\(categories.count) categor\(categories.count == 1 ? "y" : "ies")")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                            Spacer()
-                            //NavigationLink(destination: CategoriesView()) {
-                                HStack {
-                                    Image(systemName: "chevron.right")
-                                }
-                                .foregroundColor(.blue)
-                            //}
-                        }
-
-                        if categories.isEmpty {
-                            VStack(spacing: 8) {
-                                Image(systemName: "tag")
-                                    .font(.system(size: 32))
-                                    .foregroundColor(.secondary)
-                                Text("No categories yet")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                                Text("Add your first category to organize transactions")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                    .multilineTextAlignment(.center)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 20)
-                        } else {
-                            LazyVStack(spacing: 8) {
-                                ForEach(categories.prefix(3)) { category in
-                                    CategorySummaryRow(category: category, transactions: transactions)
-                                        .onTapGesture {
-                                            // handle tap or edit navigation
-                                        }
-                                }
-                            }
-                        }
-                    }
-                    .padding()
-                    .background(Color(.systemBackground))
-                    .cornerRadius(16)
-                    .shadow(color: Color.black.opacity(0.03), radius: 8, x: 0, y: 2)
-                    .padding(.horizontal)
-                    
-                    
+                                        
                     // Transactions Card
                     VStack(alignment: .leading, spacing: 16) {
                         HStack {

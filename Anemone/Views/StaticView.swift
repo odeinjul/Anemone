@@ -58,7 +58,7 @@ struct NetWorthDataPoint {
     }
 }
 
-struct StaticView: View {
+struct StatisticView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var accounts: [Account]
     @Query private var transactions: [Transaction]

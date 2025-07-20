@@ -38,9 +38,9 @@ struct AnemoneApp: App {
                         Label("Analyze", systemImage: "chart.line.text.clipboard")
                     }
                 */
-                StaticView()
+                StatisticView()
                     .tabItem {
-                        Label("Static", systemImage: "wallet.bifold")
+                        Label("Statistic", systemImage: "wallet.bifold")
                     }
                 /*
                 TestView()

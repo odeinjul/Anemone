@@ -266,18 +266,19 @@ struct TransactionRow: View {
                 }
                 
                 HStack {
-                    Text(transaction.category.name)
-                        .font(.caption)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(4)
-                    
-                    Spacer()
-                    
                     Text(transaction.account.name)
                         .font(.caption)
                         .foregroundColor(.secondary)
+                    
+                    if let category = transaction.category {
+                        Spacer()
+                        Text(category.name)
+                            .font(.caption)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 2)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(4)
+                    }
                 }
                 
                 if let note = transaction.note, !note.isEmpty {
@@ -362,16 +363,8 @@ struct AddEditTransactionView: View {
     var body: some View {
         NavigationStack {
             Form {
-                // Basic Information Section
-                Section("Transaction Details") {
-                    HStack {
-                        Text("Name")
-                        Spacer()
-                        TextField("Transaction name", text: $name)
-                            .multilineTextAlignment(.trailing)
-                            .textInputAutocapitalization(.words)
-                    }
-                    
+                // Amount Section
+                Section("Basic") {
                     Picker("Type", selection: $type) {
                         Text("Income").tag(TransactionType.income)
                         Text("Expense").tag(TransactionType.expense)
@@ -386,16 +379,6 @@ struct AddEditTransactionView: View {
                         }
                     }
                     
-                    DatePicker(
-                        "Date",
-                        selection: $transactionDate,
-                        displayedComponents: [.date]
-                    )
-                    .datePickerStyle(.compact)
-                }
-                
-                // Amount Section
-                Section("Amount") {
                     HStack {
                         Text("Amount")
                         Spacer()
@@ -418,10 +401,7 @@ struct AddEditTransactionView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                }
-                
-                // Account Section
-                Section("Account") {
+                    
                     Picker("From Account", selection: $selectedAccount) {
                         Text("Select Account").tag(Account?.none)
                         ForEach(accounts) { account in
@@ -460,8 +440,24 @@ struct AddEditTransactionView: View {
                     }
                 }
                 
-                // Category Section
-                Section("Category") {
+                // Basic Information Section
+                Section("Details") {
+                    HStack {
+                        Text("Name")
+                        Spacer()
+                        TextField("Transaction name", text: $name)
+                            .multilineTextAlignment(.trailing)
+                            .textInputAutocapitalization(.words)
+                    }
+                    
+
+                    DatePicker(
+                        "Date",
+                        selection: $transactionDate,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(.compact)
+                    
                     HStack {
                         Picker("Category", selection: $selectedCategory) {
                             Text("Select Category").tag(Category?.none)
@@ -471,22 +467,22 @@ struct AddEditTransactionView: View {
                         }
                         .pickerStyle(.menu)
                         
-                        Button("New") {
+                        Button(action: {
                             showingNewCategoryAlert = true
+                        }) {
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(.blue)
+                                .font(.title3)
+                                .accessibilityLabel("Add new category")
                         }
-                        .font(.caption)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(4)
+                        .buttonStyle(PlainButtonStyle())
                     }
-                }
-                
-                // Note Section
-                Section("Note") {
-                    TextField("Optional note", text: $note, axis: .vertical)
-                        .lineLimit(3...6)
+                    
+                    VStack (alignment: .leading){
+                        Text("Name")
+                        TextField("Optional note", text: $note, axis: .vertical)
+                            .lineLimit(3...6)
+                    }
                 }
                 
                 // Current Balance Preview (for editing)
@@ -630,6 +626,7 @@ struct AddEditTransactionView: View {
             existingTransaction.account = account
             existingTransaction.category = category
             existingTransaction.note = note.isEmpty ? nil : note
+            existingTransaction.date = transactionDate
             existingTransaction.transferAccount = transferAccount
             existingTransaction.transferAmount = transferAmountDecimal
         } else {
@@ -639,6 +636,7 @@ struct AddEditTransactionView: View {
                 amount: amountDecimal,
                 account: account,
                 category: category,
+                date: transactionDate,
                 note: note.isEmpty ? nil : note,
                 transferAccount: transferAccount,
                 transferAmount: transferAmountDecimal
@@ -671,9 +669,11 @@ struct TransactionSummaryRow: View {
                     .fontWeight(.medium)
                     .lineLimit(1)
                 HStack (spacing: 2){
-                    Text(transaction.category.name)
-                    Text("•")
                     Text(transaction.account.name)
+                    if let category = transaction.category {
+                        Text("•")
+                        Text(category.name)
+                    }
                 }
                 .font(.caption2)
                 .foregroundColor(.secondary)

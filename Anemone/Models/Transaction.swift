@@ -19,18 +19,20 @@ class Transaction {
     var type: TransactionType
     var amount: Decimal
     var account: Account
-    var category: Category
+    var category: Category?
     var note: String?
-    var date: Date = Date()
+    var date: Date
     var transferAccount: Account?
     var transferAmount: Decimal? // in case transfer between different currencies, w/ handling fee
-    init(name: String, type: TransactionType, amount: Decimal, account: Account, category: Category, note: String? = nil, transferAccount: Account? = nil, transferAmount: Decimal? = nil) {
+    init(name: String, type: TransactionType, amount: Decimal, account: Account, category: Category? = nil, date: Date = Date(),
+         note: String? = nil, transferAccount: Account? = nil, transferAmount: Decimal? = nil) {
         self.name = name
         self.type = type
         self.amount = amount
         self.account = account
         self.category = category
         self.note = note
+        self.date = date
         self.transferAccount = transferAccount
         self.transferAmount = transferAmount
     }
